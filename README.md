@@ -1,0 +1,2 @@
+jit-adapter-archetype
+=====================
