@@ -6,7 +6,7 @@
 
 	<servlet>
 		<servlet-name>JSDNJIFServlet</servlet-name>
-		<servlet-class>${package}.servlet.JSDNJIFServlet</servlet-class>
+		<servlet-class>com.jamcracker.jif.servlet.JSDNJIFServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

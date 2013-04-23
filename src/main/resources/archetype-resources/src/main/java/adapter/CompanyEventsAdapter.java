@@ -4,7 +4,7 @@
 /**
  * 
  */
-package com.jamcracker.jif.adapter.template;
+package ${package}.adapter;
 
 import com.jamcracker.jif.adapter.BaseCompanyEventsAdapter;
 import com.jamcracker.jif.common.JIFConstants;

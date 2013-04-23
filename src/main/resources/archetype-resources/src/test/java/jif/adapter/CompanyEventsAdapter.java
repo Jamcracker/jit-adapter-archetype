@@ -1,18 +1,48 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.adapter.template;
+ /************************************************************************ 
+ *   Copyright [2013] [Jamcracker Inc]
+ * 
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *   
+ *   
+ * @ClassName ${package}.jif.adapter.CompanyEventsAdapter
+ * @version 1.0
+ * @author 
+ * @date 
+ * @see
+ *   
+ /*************************************************************************/
+package ${package}.jif.adapter;
 
-import ${package}.adapter.BaseUserEventsAdapter;
-import ${package}.common.JIFConstants;
-import ${package}.dataobject.JIFRequest;
-import ${package}.dataobject.JIFResponse;
+import java.util.HashMap;
 
-public class UserEventsAdapter extends BaseUserEventsAdapter {
+import com.jamcracker.jif.adapter.BaseCompanyEventsAdapter;
+import com.jamcracker.jif.common.JIFConstants;
+import com.jamcracker.jif.dataobject.JIFRequest;
+import com.jamcracker.jif.dataobject.JIFResponse;
+
+/**
+ * @author ppnair
+ *
+ */
+public class CompanyEventsAdapter extends BaseCompanyEventsAdapter {
+	
 	/* (non-Javadoc)
-	 * @see ${package}.adapter.IJIFAdapter${symbol_pound}createUser(${package}.dataobject.JIFRequest)
+	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}createCompany(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse createUser(JIFRequest jifRequest) {
+	public JIFResponse createCompany(JIFRequest jifRequest) {
 		/* fetch service data
 		 * this corresponds to the following in request XML 
 		 * 
@@ -51,7 +81,7 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
 		//If you want to update some value back to JSDN
 		
-		// jifResponse.setCompanyField("UID", value);
+		jifResponse.setCompanyField("UID", "test");
 		
 		// if failure
 		
@@ -61,12 +91,11 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		
 		return jifResponse;
 	}
-
-
+	
 	/* (non-Javadoc)
-	 * @see ${package}.adapter.IJIFAdapter${symbol_pound}updateUser(${package}.dataobject.JIFRequest)
+	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}updateCompany(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse updateUser(JIFRequest jifRequest) {
+	public JIFResponse updateCompany(JIFRequest jifRequest) {
 		/* fetch service data. 
 		 * this corresponds to the following in request XML 
 		 * 
@@ -140,14 +169,14 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		return jifResponse;
 		
 	}
-	
-	
 
+	
+	
 	/* (non-Javadoc)
-	 * @see ${package}.adapter.IJIFAdapter${symbol_pound}deleteUser(${package}.dataobject.JIFRequest)
+	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}deleteCompany(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse deleteUser(JIFRequest jifRequest) {
-		/* fetch service data. 
+	public JIFResponse deleteCompany(JIFRequest jifRequest) {
+		/* fetch service data
 		 * this corresponds to the following in request XML 
 		 * 
 		 * 		<entitydata entitytype="service">
@@ -160,11 +189,11 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		 *  eg. String sField1 = jifRequest.getServiceField("sField1");
 		 * 
 		 * */
-		//fetch company mandatory data. These will be there in every company/ user request. 
+		//fetch company mandatory data. These will be there in every company request.
 		String companyAcr = jifRequest.getCompanyField(JIFConstants.FIELD_COMPANY_ACRONYM);
 		String companyName = jifRequest.getCompanyField(JIFConstants.FIELD_COMPANY_NAME);
 		
-		/* fetch application specific company data
+		/* fetch application specific data
 		 * this corresponds to the following in request XML 
 		 * 
 		 * 		<entitydata entitytype="company">
@@ -177,39 +206,12 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		 *  eg. String cField1 = jifRequest.getServiceField("cField1");
 		 * 
 		 * */
-
-		//fetch user mandatory data. These will be there in every user request.
-		String firstName = jifRequest.getUserField(JIFConstants.FIELD_FIRSTNAME);
-		String lastName = jifRequest.getUserField(JIFConstants.FIELD_LASTNAME);
-		String emailId = jifRequest.getUserField(JIFConstants.FIELD_EMAIL);
-		String contactPhone  = jifRequest.getUserField(JIFConstants.FIELD_CONTACT_PHONE);
-
-		String loginName = jifRequest.getUserField(JIFConstants.FIELD_LOGINNAME);
-		String password = jifRequest.getUserField(JIFConstants.FIELD_PASSWORD);
-		//set the above password generated by Jamcracker to the user in your application
-		
-		/* fetch application specific user data
-		 * this corresponds to the following in request XML 
-		 * 
-		 * 		<entitydata entitytype="user">
-		 *			<datafield datatype="string">
-		 *				<name>uField1</name>
-		 * 				<value>371</value>
-		 *			</datafield>
-		 *		</entitydata>
-		 * 
-		 *  eg. String uField1 = jifRequest.getServiceField("uField1");
-		 * 
-		 * */
 		
 		//post it to your application using your APIs
 		
 		//receive the response
 		// If success
 		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
-		//If you want to update some value back to JSDN
-		
-		// jifResponse.setCompanyField("UID", value);
 		
 		// if failure
 		
@@ -220,61 +222,4 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		return jifResponse;
 	}
 
-	public JIFResponse getHTMLForSSO(JIFRequest jifRequest) {
-		//fetch user mandatory data. These will be there in every user request.
-		String loginName = jifRequest.getUserField(JIFConstants.FIELD_LOGINNAME);
-		String password = jifRequest.getUserField(JIFConstants.FIELD_PASSWORD);
-		//set the above password generated by Jamcracker to the user in your application
-		
-		/* fetch application specific user data
-		 * this corresponds to the following in request XML 
-		 * 
-		 * 		<entitydata entitytype="user">
-		 *			<datafield datatype="string">
-		 *				<name>uField1</name>
-		 * 				<value>371</value>
-		 *			</datafield>
-		 *		</entitydata>
-		 * 
-		 *  eg. String uField1 = jifRequest.getServiceField("uField1");
-		 * 
-		 * */
-		
-		// Generate the HTML for the SSO 
-		String htmlForSSO = createSSOHTML(jifRequest);
-		
-		//Create a success response object
-		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
-
-		//set the HTML content in response
-		jifResponse.setHtmlForSSO(htmlForSSO);
-		//send back the response
-		
-		return jifResponse;
-	}
-
-	private String createSSOHTML(JIFRequest jifRequest) {
-		//Preparing the string
-
-		StringBuffer sb = new StringBuffer("");
-		sb.append("<html>");
-		sb.append("<head>");
-		sb.append(" <meta HTTP-EQUIV=${symbol_escape}"Content-Type${symbol_escape}" CONTENT=${symbol_escape}"text/html; charset=ISO-8859-1${symbol_escape}">");
-		sb.append(" <script language='JavaScript'>");
-		sb.append("   function submitSSOForm(){");
-		sb.append("     document.ssoform.submit();");
-		sb.append("   }");
-		sb.append(" </script>");
-		sb.append(" <title>SSO :- </title>");
-		sb.append("</head>");
-		sb.append("<body onLoad='submitSSOForm();return true;'>");
-		sb.append(" <form method=${symbol_escape}"post${symbol_escape}" name=${symbol_escape}"ssoform${symbol_escape}" action=${symbol_escape}"http://someurl${symbol_escape}">");
-		sb.append("   <input type=${symbol_escape}"hidden${symbol_escape}" name=${symbol_escape}"loginName${symbol_escape}" value=${symbol_escape}"" + jifRequest.getUserField(JIFConstants.FIELD_LOGINNAME) + "${symbol_escape}">");
-		sb.append("   <input type=${symbol_escape}"hidden${symbol_escape}" name=${symbol_escape}"pass${symbol_escape}" value=${symbol_escape}"" + jifRequest.getUserField(JIFConstants.FIELD_PASSWORD) + "${symbol_escape}">");
-		sb.append(" </form>");
-		sb.append("</body>");
-		sb.append("</html>");
-		return  sb.toString();
-
-	}
 }

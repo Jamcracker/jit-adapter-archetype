@@ -59,7 +59,7 @@
     <dependency>
       <groupId>com.jamcracker.jifs</groupId>
       <artifactId>jit-core</artifactId>
-      <version>1.0-BETA-SNAPSHOT</version>
+      <version>1.0-BETA</version>
     </dependency>
   </dependencies>
 </project>

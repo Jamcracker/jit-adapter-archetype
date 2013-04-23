@@ -1,0 +1,24 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?> 
+<jcprovisionmessage>
+	<body>
+		<response>
+			<command type="company" name="create">
+				<entityresponse>
+					<faultcode>0</faultcode>
+					<faultstring>SUCCESS</faultstring>
+				</entityresponse>			
+				<entitydata entitytype="company">
+				
+					<datafield datatype="string"><name>UID</name><value>test</value></datafield>
+				
+				</entitydata>
+				
+				
+				
+			</command>
+		</response>
+	</body>
+</jcprovisionmessage>

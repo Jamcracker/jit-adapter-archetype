@@ -1,11 +1,11 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.adapter.template;
+package ${package}.adapter;
 
-import ${package}.adapter.Authentication;
-import ${package}.dataobject.AuthInfo;
-import ${package}.exception.AuthenticationException;
+import com.jamcracker.jif.adapter.Authentication;
+import com.jamcracker.jif.dataobject.AuthInfo;
+import com.jamcracker.jif.exception.AuthenticationException;
 
 public class AuthenticationImpl implements Authentication {
 
@@ -14,7 +14,7 @@ public class AuthenticationImpl implements Authentication {
 		String authPassword = authInfo.getPassword();
 		//If the auth info is not valid throw exception
 		
-		//throw new AuthenticationException(1000,"Autherization failed");
+		//throw new AuthenticationException(1000,"Authorization failed");
 	}
 
 }
