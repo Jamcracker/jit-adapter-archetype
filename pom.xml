@@ -27,6 +27,29 @@
       </plugins>
     </pluginManagement>
   </build>
-
-  <url>http://maven.apache.org</url>
+  <url>http://www.jamcracker.com</url>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>  
+  <developers>
+    <developer>
+      <id>ppnair</id>
+      <name>Prasad P Nair</name>
+      <email>ppnair@jamcracker.com</email>
+    </developer>
+  </developers>  
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+  <scm>
+    <connection>scm:git:prasadpnair@github.com/Jamcracker/jit-adapter-archetype.git</connection>
+    <developerConnection>scm:git:https://github.com/Jamcracker/jit-adapter-archetype.git</developerConnection>
+    <url>scm:git:prasadpnair@github.com/Jamcracker/jit-adapter-archetype.git</url>
+  </scm>  
 </project>
