@@ -4,7 +4,7 @@
 
   <groupId>com.jamcracker.adapter.jit</groupId>
   <artifactId>jit-adapter-archetype</artifactId>
-  <version>1.0-BETA</version>
+  <version>1.1-BETA-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>jit-adapter-archetype</name>
