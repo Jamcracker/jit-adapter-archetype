@@ -11,7 +11,7 @@
 
 	<servlet-mapping>
 		<servlet-name>JSDNJIFServlet</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/provision</url-pattern>
 	</servlet-mapping>
 
 
