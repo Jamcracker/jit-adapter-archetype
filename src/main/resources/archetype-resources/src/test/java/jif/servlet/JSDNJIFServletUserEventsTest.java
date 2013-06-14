@@ -136,5 +136,9 @@ public class JSDNJIFServletUserEventsTest {
         Document doc = docBuilder.parse(new ByteArrayInputStream(xml.getBytes()));
     	return doc;
     }
-	
+
+    public String trimXML(String xml){
+    	xml = xml.replaceAll(">[ \r\t\n]*<", "><");
+    	return xml;
+    }    
 }
