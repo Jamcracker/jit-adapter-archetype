@@ -7,12 +7,14 @@ import com.jamcracker.jif.adapter.BaseUserEventsAdapter;
 import com.jamcracker.jif.common.JIFConstants;
 import com.jamcracker.jif.dataobject.JIFRequest;
 import com.jamcracker.jif.dataobject.JIFResponse;
+import com.jamcracker.jif.dataobject.SuccessResponse;
+import com.jamcracker.jif.exception.JIFException;
 
 public class UserEventsAdapter extends BaseUserEventsAdapter {
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}createUser(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse createUser(JIFRequest jifRequest) {
+	public JIFResponse createUser(JIFRequest jifRequest) throws JIFException{
 		/* fetch service data
 		 * this corresponds to the following in request XML 
 		 * 
@@ -44,29 +46,28 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		 * 
 		 * */
 		
-		//post it to your application using your APIs
-		
-		//receive the response
-		// If success
-		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
-		//If you want to update some value back to JSDN
-		
-		// jifResponse.setCompanyField("UID", value);
-		
-		// if failure
-		
-		//JIFResponse jifResponse = new JIFResponse(ERROR CODE,ERROR STRING);
-		
-		//send back the response
-		
-		return jifResponse;
+		try{
+			//post it to your application using your APIs
+			
+			//receive the response
+			// If success
+			SuccessResponse jifResponse = new SuccessResponse();
+			//If you want to update some value back to JSDN
+			jifResponse.setCompanyField("UID", "test");
+			return jifResponse;
+
+		}catch(Exception e){
+			//On error, set proper error code and error response
+			throw new JIFException("404", "Duplicate User Found");
+		}
+
 	}
 
 
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}updateUser(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse updateUser(JIFRequest jifRequest) {
+	public JIFResponse updateUser(JIFRequest jifRequest) throws JIFException{
 		/* fetch service data. 
 		 * this corresponds to the following in request XML 
 		 * 
@@ -122,23 +123,23 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		 * 
 		 * */
 		
-		//post it to your application using your APIs
-		
-		//receive the response
-		// If success
-		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
-		//If you want to update some value back to JSDN
-		
-		// jifResponse.setCompanyField("UID", value);
-		
-		// if failure
-		
-		//JIFResponse jifResponse = new JIFResponse(ERROR CODE,ERROR STRING);
-		
-		//send back the response
-		
-		return jifResponse;
-		
+		try{
+			//post it to your application using your APIs
+			
+			//receive the response
+			// If success
+			SuccessResponse jifResponse = new SuccessResponse();
+			//If async response
+			//SuccessResponse jifResponse = new WaitResponse();
+			
+			//If you want to update some value back to JSDN
+			jifResponse.setCompanyField("UID", "test");
+			return jifResponse;
+
+		}catch(Exception e){
+			//On error, set proper error code and error response
+			throw new JIFException("404", "User Not Found");
+		}
 	}
 	
 	
@@ -146,7 +147,7 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}deleteUser(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse deleteUser(JIFRequest jifRequest) {
+	public JIFResponse deleteUser(JIFRequest jifRequest) throws JIFException{
 		/* fetch service data. 
 		 * this corresponds to the following in request XML 
 		 * 
@@ -202,22 +203,23 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		 * 
 		 * */
 		
-		//post it to your application using your APIs
-		
-		//receive the response
-		// If success
-		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
-		//If you want to update some value back to JSDN
-		
-		// jifResponse.setCompanyField("UID", value);
-		
-		// if failure
-		
-		//JIFResponse jifResponse = new JIFResponse(ERROR CODE,ERROR STRING);
-		
-		//send back the response
-		
-		return jifResponse;
+		try{
+			//post it to your application using your APIs
+			
+			//receive the response
+			// If success
+			SuccessResponse jifResponse = new SuccessResponse();
+			//If async response
+			//SuccessResponse jifResponse = new WaitResponse();
+			
+			//If you want to update some value back to JSDN
+			jifResponse.setCompanyField("UID", "test");
+			return jifResponse;
+
+		}catch(Exception e){
+			//On error, set proper error code and error response
+			throw new JIFException("404", "User not Found");
+		}
 	}
 
 	public JIFResponse getHTMLForSSO(JIFRequest jifRequest) {

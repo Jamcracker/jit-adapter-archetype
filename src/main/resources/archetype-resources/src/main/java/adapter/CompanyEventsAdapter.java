@@ -10,6 +10,9 @@ import com.jamcracker.jif.adapter.BaseCompanyEventsAdapter;
 import com.jamcracker.jif.common.JIFConstants;
 import com.jamcracker.jif.dataobject.JIFRequest;
 import com.jamcracker.jif.dataobject.JIFResponse;
+import com.jamcracker.jif.dataobject.SuccessResponse;
+import com.jamcracker.jif.dataobject.WaitResponse;
+import com.jamcracker.jif.exception.JIFException;
 
 /**
  * @author ppnair
@@ -20,7 +23,7 @@ public class CompanyEventsAdapter extends BaseCompanyEventsAdapter {
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}createCompany(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse createCompany(JIFRequest jifRequest) {
+	public JIFResponse createCompany(JIFRequest jifRequest) throws JIFException {
 		/* fetch service data
 		 * this corresponds to the following in request XML 
 		 * 
@@ -51,29 +54,30 @@ public class CompanyEventsAdapter extends BaseCompanyEventsAdapter {
 		 *  eg. String cField1 = jifRequest.getServiceField("cField1");
 		 * 
 		 * */
-		
-		//post it to your application using your APIs
-		
-		//receive the response
-		// If success
-		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
-		//If you want to update some value back to JSDN
-		
-		jifResponse.setCompanyField("UID", "test");
-		
-		// if failure
-		
-		//JIFResponse jifResponse = new JIFResponse(ERROR CODE,ERROR STRING);
-		
-		//send back the response
-		
-		return jifResponse;
+		try{
+			//post it to your application using your APIs
+			
+			//receive the response
+			// If success
+			SuccessResponse jifResponse = new SuccessResponse();
+			
+			//If async response
+			//SuccessResponse jifResponse = new WaitResponse();
+			//If you want to update some value back to JSDN
+			jifResponse.setCompanyField("UID", "test");
+			return jifResponse;
+
+		}catch(Exception e){
+			//On error, set proper error code and error response
+			throw new JIFException("404", "Duplicate Account Found");
+		}
+
 	}
 	
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}updateCompany(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse updateCompany(JIFRequest jifRequest) {
+	public JIFResponse updateCompany(JIFRequest jifRequest) throws JIFException{
 		/* fetch service data. 
 		 * this corresponds to the following in request XML 
 		 * 
@@ -129,23 +133,23 @@ public class CompanyEventsAdapter extends BaseCompanyEventsAdapter {
 		 * 
 		 * */
 		
-		//post it to your application using your APIs
-		
-		//receive the response
-		// If success
-		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
-		//If you want to update some value back to JSDN
-		
-		// jifResponse.setCompanyField("UID", value);
-		
-		// if failure
-		
-		//JIFResponse jifResponse = new JIFResponse(ERROR CODE,ERROR STRING);
-		
-		//send back the response
-		
-		return jifResponse;
-		
+		try{
+			//post it to your application using your APIs
+			
+			//receive the response
+			// If success
+			SuccessResponse jifResponse = new SuccessResponse();
+			//If async response
+			//SuccessResponse jifResponse = new WaitResponse();
+
+			//If you want to update some value back to JSDN
+			jifResponse.setCompanyField("UID", "test");
+			return jifResponse;
+
+		}catch(Exception e){
+			//On error, set proper error code and error response
+			throw new JIFException("404", "Account not able to update");
+		}
 	}
 
 	
@@ -153,7 +157,7 @@ public class CompanyEventsAdapter extends BaseCompanyEventsAdapter {
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}deleteCompany(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
-	public JIFResponse deleteCompany(JIFRequest jifRequest) {
+	public JIFResponse deleteCompany(JIFRequest jifRequest) throws JIFException{
 		/* fetch service data
 		 * this corresponds to the following in request XML 
 		 * 
@@ -185,19 +189,24 @@ public class CompanyEventsAdapter extends BaseCompanyEventsAdapter {
 		 * 
 		 * */
 		
-		//post it to your application using your APIs
-		
-		//receive the response
-		// If success
-		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
-		
-		// if failure
-		
-		//JIFResponse jifResponse = new JIFResponse(ERROR CODE,ERROR STRING);
-		
-		//send back the response
-		
-		return jifResponse;
+		try{
+			//post it to your application using your APIs
+			
+			//receive the response
+			// If success
+			SuccessResponse jifResponse = new SuccessResponse();
+			//If async response
+			//SuccessResponse jifResponse = new WaitResponse();
+
+			//If you want to update some value back to JSDN
+			jifResponse.setCompanyField("UID", "test");
+			return jifResponse;
+
+		}catch(Exception e){
+			//On error, set proper error code and error response
+			throw new JIFException("404", "Account Not Found");
+		}
+
 	}
 
 }
