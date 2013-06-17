@@ -142,8 +142,6 @@ public class CompanyEventsAdapter extends BaseCompanyEventsAdapter {
 			//If async response
 			//SuccessResponse jifResponse = new WaitResponse();
 
-			//If you want to update some value back to JSDN
-			jifResponse.setCompanyField("UID", "test");
 			return jifResponse;
 
 		}catch(Exception e){
@@ -198,8 +196,6 @@ public class CompanyEventsAdapter extends BaseCompanyEventsAdapter {
 			//If async response
 			//SuccessResponse jifResponse = new WaitResponse();
 
-			//If you want to update some value back to JSDN
-			jifResponse.setCompanyField("UID", "test");
 			return jifResponse;
 
 		}catch(Exception e){

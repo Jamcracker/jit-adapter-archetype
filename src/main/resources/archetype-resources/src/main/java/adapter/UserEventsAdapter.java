@@ -52,8 +52,6 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 			//receive the response
 			// If success
 			SuccessResponse jifResponse = new SuccessResponse();
-			//If you want to update some value back to JSDN
-			jifResponse.setCompanyField("UID", "test");
 			return jifResponse;
 
 		}catch(Exception e){
@@ -132,8 +130,6 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 			//If async response
 			//SuccessResponse jifResponse = new WaitResponse();
 			
-			//If you want to update some value back to JSDN
-			jifResponse.setCompanyField("UID", "test");
 			return jifResponse;
 
 		}catch(Exception e){
@@ -212,8 +208,6 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 			//If async response
 			//SuccessResponse jifResponse = new WaitResponse();
 			
-			//If you want to update some value back to JSDN
-			jifResponse.setCompanyField("UID", "test");
 			return jifResponse;
 
 		}catch(Exception e){
@@ -246,7 +240,7 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		String htmlForSSO = createSSOHTML(jifRequest);
 		
 		//Create a success response object
-		JIFResponse jifResponse = new JIFResponse(JIFConstants.SUCCESS_CODE,"SUCCESS");
+		SuccessResponse jifResponse = new SuccessResponse();
 
 		//set the HTML content in response
 		jifResponse.setHtmlForSSO(htmlForSSO);
