@@ -14,6 +14,7 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}createUser(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
+	@Override
 	public JIFResponse createUser(JIFRequest jifRequest) throws JIFException{
 		/* fetch service data
 		 * this corresponds to the following in request XML 
@@ -65,6 +66,7 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}updateUser(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
+	@Override
 	public JIFResponse updateUser(JIFRequest jifRequest) throws JIFException{
 		/* fetch service data. 
 		 * this corresponds to the following in request XML 
@@ -143,6 +145,7 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 	/* (non-Javadoc)
 	 * @see com.jamcracker.jif.adapter.IJIFAdapter${symbol_pound}deleteUser(com.jamcracker.jif.dataobject.JIFRequest)
 	 */
+	@Override
 	public JIFResponse deleteUser(JIFRequest jifRequest) throws JIFException{
 		/* fetch service data. 
 		 * this corresponds to the following in request XML 
@@ -215,8 +218,9 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 			throw new JIFException("404", "User not Found");
 		}
 	}
-
-	public JIFResponse getHTMLForSSO(JIFRequest jifRequest) {
+	
+	@Override
+	public JIFResponse getSSO(JIFRequest jifRequest) {
 		//fetch user mandatory data. These will be there in every user request.
 		String loginName = jifRequest.getUserField(JIFConstants.FIELD_LOGINNAME);
 		String password = jifRequest.getUserField(JIFConstants.FIELD_PASSWORD);
@@ -237,40 +241,28 @@ public class UserEventsAdapter extends BaseUserEventsAdapter {
 		 * */
 		
 		// Generate the HTML for the SSO 
-		String htmlForSSO = createSSOHTML(jifRequest);
+		String urlForSSO = createSSOURL(jifRequest);
 		
 		//Create a success response object
 		SuccessResponse jifResponse = new SuccessResponse();
 
 		//set the HTML content in response
-		jifResponse.setHtmlForSSO(htmlForSSO);
+		jifResponse.setUrlForSSO(urlForSSO);
 		//send back the response
 		
 		return jifResponse;
 	}
 
-	private String createSSOHTML(JIFRequest jifRequest) {
+	private String createSSOURL(JIFRequest jifRequest) {
 		//Preparing the string
-
-		StringBuffer sb = new StringBuffer("");
-		sb.append("<html>");
-		sb.append("<head>");
-		sb.append(" <meta HTTP-EQUIV=${symbol_escape}"Content-Type${symbol_escape}" CONTENT=${symbol_escape}"text/html; charset=ISO-8859-1${symbol_escape}">");
-		sb.append(" <script language='JavaScript'>");
-		sb.append("   function submitSSOForm(){");
-		sb.append("     document.ssoform.submit();");
-		sb.append("   }");
-		sb.append(" </script>");
-		sb.append(" <title>SSO :- </title>");
-		sb.append("</head>");
-		sb.append("<body onLoad='submitSSOForm();return true;'>");
-		sb.append(" <form method=${symbol_escape}"post${symbol_escape}" name=${symbol_escape}"ssoform${symbol_escape}" action=${symbol_escape}"http://someurl${symbol_escape}">");
-		sb.append("   <input type=${symbol_escape}"hidden${symbol_escape}" name=${symbol_escape}"loginName${symbol_escape}" value=${symbol_escape}"" + jifRequest.getUserField(JIFConstants.FIELD_LOGINNAME) + "${symbol_escape}">");
-		sb.append("   <input type=${symbol_escape}"hidden${symbol_escape}" name=${symbol_escape}"pass${symbol_escape}" value=${symbol_escape}"" + jifRequest.getUserField(JIFConstants.FIELD_PASSWORD) + "${symbol_escape}">");
-		sb.append(" </form>");
-		sb.append("</body>");
-		sb.append("</html>");
-		return  sb.toString();
-
+		String loginName = jifRequest.getUserField(JIFConstants.FIELD_LOGINNAME);
+		String password = jifRequest.getUserField(JIFConstants.FIELD_PASSWORD);
+		/*
+		The URL should be hashed/ encrypted and should be valid only for maximum of 30 minutes. This URL when pasted in the browser should login
+		the user into the application without asking username/password
+		*/
+		String url = "http://sso.app.com/SOMEHASHEDVALUE";//+something
+		return  url;
 	}
+	
 }
